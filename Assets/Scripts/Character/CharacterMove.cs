@@ -6,9 +6,10 @@ public class CharacterMove : MonoBehaviour
 {
     public float fallGravity = 0.1f;
     public float moveGravity = 0.3f;
-    public float timer = 0f;
-    public float interval = 0.1f;
-    public Vector3 nowSpeed = new Vector3(0.3f, 0.3f, 0.1f);
+    private float timer = 0f;
+    private float interval = 0.1f;
+    private float teleportZPosition = 100f;
+    private Vector3 nowSpeed = new Vector3(0, 0, 0.1f);
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,10 @@ public class CharacterMove : MonoBehaviour
         {
             timer = 0f;
             MoveCharacter();
+        }
+        if (transform.position.z >= teleportZPosition)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
     }
     void MoveCharacter()

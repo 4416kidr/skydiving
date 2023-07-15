@@ -33,6 +33,7 @@ public class CubeGenerator : MonoBehaviour
         float yPos = Random.Range(-5f, 5f);
         Vector3 position = new Vector3(xPos, yPos, zPos);
         Quaternion rotation = Quaternion.identity;
-        Instantiate(prefab, position, rotation);
+        GameObject childObject = Instantiate(prefab, position, rotation);
+        childObject.transform.parent = transform;
     }
 }

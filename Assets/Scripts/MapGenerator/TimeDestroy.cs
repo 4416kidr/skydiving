@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public float DelayTime = 10f;
+    // public float DelayTime = 10f;
     public float DestroyTime = 1f;
+    public GameObject Character;
 
     void DestroyObject() 
     {
@@ -15,12 +16,17 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         Invoke("DestroyObject", DelayTime);
+        //  Invoke("DestroyObject", DelayTime);
+        Character = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Character.transform.position.z > transform.position.z)
+        {
+            DestroyObject();
+        }
         
     }
 }

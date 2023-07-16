@@ -29,19 +29,15 @@ public class CharacterMove : MonoBehaviour
         gravityDirection = new Vector3(horizontalInput, verticalInput, 1f);
         body.AddForce(gravityDirection * gravityStrength * gravityScale);
 
-        if (transform.position.z >= teleportZPosition)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        }
+        // if (transform.position.z >= teleportZPosition)
+        // {
+        //     transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        // }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        // Vector3 relativePoint = transform.InverseTransformPoint(collision.contacts[0].point);
-        // if (relativePoint.z >= 0.4)
-        // {
-        // }
         collisionCount += 1;
-        Debug.Log($"{collisionCount}");
-        hp_management.UpdateSlider();
+        // Debug.Log($"{collisionCount}");
+        hp_management.UpdateSlider(collision.gameObject.name);
     }
 }

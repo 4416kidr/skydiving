@@ -9,7 +9,7 @@ public class CubeGenerator : MonoBehaviour
     public GameObject sphere;
     public GameObject[] objectsList;
 
-    public float interval = 1f;
+    public float interval = 0.01f;
     public float zInterval = 1f;
     public float nowZPos = 10f;
     private float timer = 0f;

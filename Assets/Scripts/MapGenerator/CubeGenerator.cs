@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class CubeGenerator : MonoBehaviour
 {
-    public GameObject prefab;
+    public GameObject capsule;
+    public GameObject cube;
+    public GameObject sphere;
+    public GameObject[] objectsList;
+
     public float interval = 1f;
     public float zInterval = 1f;
     public float nowZPos = 10f;
@@ -13,7 +17,6 @@ public class CubeGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -29,11 +32,16 @@ public class CubeGenerator : MonoBehaviour
     }
     void GenerateObject(float zPos)
     {
+        objectsList = new GameObject[3];
+        objectsList[0] = capsule;
+        objectsList[1] = cube;
+        objectsList[2] = sphere;
+        int randomNamber = Random.Range(0, 3);
+
         float xPos = Random.Range(-5f, 5f);
         float yPos = Random.Range(-5f, 5f);
         Vector3 position = new Vector3(xPos, yPos, zPos);
         Quaternion rotation = Quaternion.identity;
-        GameObject childObject = Instantiate(prefab, position, rotation);
-        childObject.transform.parent = transform;
+        Instantiate(objectsList[randomNamber], position, rotation);
     }
 }

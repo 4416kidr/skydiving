@@ -22,25 +22,30 @@ public class HP_management : MonoBehaviour
         Debug.Log("Start currentHp : " + currentHp);
     }
 
-    //ColliderオブジェクトのIsTriggerにチェック入れること。
-    private void OnTriggerEnter(Collider collider)
+    public void UpdateSlider()
     {
-        //Objectタグのオブジェクトに触れると発動
-        if (collider.gameObject.tag == "Object")
-        {
-            //ダメージは1～5の中でランダムに決める。
-            int damage = Random.Range(1, 5);
-            Debug.Log("damage : " + damage);
+        Debug.Log("update slider");
+        //ダメージは1～5の中でランダムに決める。
+        int damage = Random.Range(1, 5);
+        Debug.Log("damage : " + damage);
 
-            //現在のHPからダメージを引く
-            currentHp = currentHp - damage;
-            Debug.Log("After currentHp : " + currentHp);
+        //現在のHPからダメージを引く
+        currentHp = currentHp - damage;
+        Debug.Log("After currentHp : " + currentHp);
 
-            //最大HPにおける現在のHPをSliderに反映。
-            //int同士の割り算は小数点以下は0になるので、
-            //(float)をつけてfloatの変数として振舞わせる。
-            slider.value = ((float)currentHp / (float)maxHp) * 100; ;
-            Debug.Log("slider.value : " + slider.value);
-        }
+        //最大HPにおける現在のHPをSliderに反映。
+        //int同士の割り算は小数点以下は0になるので、
+        //(float)をつけてfloatの変数として振舞わせる。
+        slider.value = ((float)currentHp / (float)maxHp) * 100; ;
+        Debug.Log("slider.value : " + slider.value);
     }
+    //ColliderオブジェクトのIsTriggerにチェック入れること。
+    // private void OnCollisionEnter(Collider collider)
+    // {
+        //Objectタグのオブジェクトに触れると発動
+    //     if (collider.gameObject.tag == "Object")
+    //     {
+    //         UpdateSlider();
+    //     }
+    // }
 }

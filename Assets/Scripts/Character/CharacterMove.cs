@@ -11,12 +11,15 @@ public class CharacterMove : MonoBehaviour
     private Rigidbody body;
     private int collisionCount = 0;
     private CharacterController cc;
+    private HP_management hp_management;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>();
         GetComponent<Rigidbody>().freezeRotation = true;
+        hp_management = GetComponent<HP_management>();
+        Debug.Log(hp_management);
     }
 
     void FixedUpdate()
@@ -33,12 +36,12 @@ public class CharacterMove : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Vector3 relativePoint = transform.InverseTransformPoint(collision.contacts[0].point);
-        if (relativePoint.z >= 0.4)
-        {
-            collisionCount += 1;
-            Debug.Log($"{collisionCount}");
-        }
-        Debug.Log($"{relativePoint}");
+        // Vector3 relativePoint = transform.InverseTransformPoint(collision.contacts[0].point);
+        // if (relativePoint.z >= 0.4)
+        // {
+        // }
+        collisionCount += 1;
+        Debug.Log($"{collisionCount}");
+        hp_management.UpdateSlider();
     }
 }

@@ -17,6 +17,7 @@ public class CubeGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        interval = 0.01f;
         objectsList = new GameObject[3];
         objectsList[0] = capsule;
         objectsList[1] = cube;
